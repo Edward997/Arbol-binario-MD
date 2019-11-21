@@ -49,15 +49,51 @@ void mostrarArbol(Nodo *arbol, int cont){
 	}
 }
 
+void preOrden(Nodo *arbol){
+	if(arbol == NULL){
+		return;
+	}
+	else{
+		cout<<arbol->dato<<" - ";
+		preOrden(arbol->izq);
+		preOrden(arbol->der);
+	}
+}
+
+void inOrden(Nodo *arbol){
+	if(arbol == NULL){
+		return;
+	}
+	else{
+		inOrden(arbol->izq);
+		cout<<arbol->dato<<" - ";
+		inOrden(arbol->der);
+	}
+}
+
+void postOrden(Nodo *arbol){
+	if(arbol == NULL){
+		return;
+	}
+	else{
+		postOrden(arbol->izq);
+		postOrden(arbol->der);
+		cout<<arbol->dato<<" - ";
+	}
+}
+
 void menu(){
 	int dato,opcion;
 	int contador=0;
 	
-	while(opcion !=3){
+	while(opcion !=6){
 		cout<< "\t.:MENU:."<<endl;
 		cout<<"1. Insertar nodo" <<endl;
 		cout<<"2. Mostrar arbol" <<endl;
-		cout<<"3. Salir" <<endl;
+		cout<<"3.Recorrer el arbol en PreOrden: " <<endl;
+		cout<<"4.Recorrer el arbol en InOrden: " <<endl;
+		cout<<"5.Recorrer el arbol en PostOrden: " <<endl;
+		cout<<"6. Salir" <<endl;
 		cout<< "-> ";
 		cin>>opcion;
 		
@@ -74,6 +110,25 @@ void menu(){
 					cout<<"\n";
 					system("pause");
 					break;
+			
+			case 3: cout<<"\nRecorrido en PreOrden: ";
+					preOrden(arbol);
+					cout<<"\n\n";
+					system("pause");
+					break;
+					
+			case 4: cout<<"\nRecorrido en InOrden: ";
+					inOrden(arbol);
+					cout<<"\n\n";
+					system("pause");
+					break;
+					
+			case 5: cout<<"\nRecorrido en PostOrden: ";
+					postOrden(arbol);
+					cout<<"\n\n";
+					system("pause");
+					break;
+					
 		}
 		system("cls");
 	}
